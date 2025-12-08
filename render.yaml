@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: antigravity2api
+    env: node
+    plan: starter
+    region: singapore
+    nodeVersion: 18
+    buildCommand: npm install --omit=dev
+    startCommand: npm start
+    envVars:
+      - key: API_KEY
+        sync: false
+      - key: ADMIN_USERNAME
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: PROXY
+        sync: false
+        required: false
+      - key: SYSTEM_INSTRUCTION
+        sync: false
+        required: false
+      - key: IMAGE_BASE_URL
+        sync: false
+        required: false
+    disk:
+      name: accounts
+      mountPath: /opt/render/project/src/data
+      sizeGB: 1
