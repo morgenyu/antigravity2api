@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import log from '../utils/logger.js';
+import SYSTEM_INSTRUCTION from './system_instruction.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -59,7 +60,7 @@ const config = {
   useNativeAxios: jsonConfig.other?.useNativeAxios !== false,
   timeout: jsonConfig.other?.timeout || 180000,
   proxy: process.env.PROXY || null,
-  systemInstruction: process.env.SYSTEM_INSTRUCTION || '',
+  systemInstruction: SYSTEM_INSTRUCTION || process.env.SYSTEM_INSTRUCTION || '',
   skipProjectIdFetch: jsonConfig.other?.skipProjectIdFetch === true
 };
 
